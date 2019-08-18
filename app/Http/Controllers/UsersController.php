@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Tests;
+use App\Users;
 //เรียกใช้ model
 
-class TestController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class TestController extends Controller
     public function index()
     {
         //index ส่วนใหญ่ get data ทั้งหมด
-        $data = Tests::get();
+        $data = Users::get();
         return $data;
     }
 
@@ -38,8 +38,9 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
+       
         //ใช้ Add data
-        $data = new Tests();
+        $data = new Users();
         $data->fill($request->all()); //อันนี้เพิ่มทั้งหมด
         //$data->name = "name" //อันนี้เพิ่มทีละฟิล ส่วนใหญ่ไว้ลักไก่
         $save = $data->save();
@@ -55,7 +56,7 @@ class TestController extends Controller
     public function show($id)
     {
         //อันนี้ไว้โชว์ ทีละอัน
-        $data = Tests::find($id);
+        $data = Users::find($id);
         return $data;
     }
 
@@ -80,7 +81,7 @@ class TestController extends Controller
     public function update(Request $request, $id)
     {
         //เอาไว้ update data 
-        $data = Tests::find($id);
+        $data = Users::find($id);
         $data -> fill($request->all());
         $update = $data->save();
         return "Update";
@@ -95,7 +96,7 @@ class TestController extends Controller
     public function destroy($id)
     {
         //ลบ data
-        $data = Tests::find($id);
+        $data = Users::find($id);
         $data->delete();
         return $data;
     }
